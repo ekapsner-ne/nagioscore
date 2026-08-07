@@ -1542,8 +1542,6 @@ int main(int argc, char **argv)
     } else {
         printf("\n\n********** cwd error!\n\n");
     }
-    
-    time_t now = 0L;
 
     execute_host_checks             = TRUE;
     execute_service_checks          = TRUE;
@@ -1552,8 +1550,6 @@ int main(int argc, char **argv)
 
     /* Increment this when the check_reaper test is fixed */
     plan_tests(452);
-
-    time(&now);
 
     run_service_tests(CHECK_TYPE_ACTIVE);
     run_service_tests(CHECK_TYPE_PASSIVE);
@@ -1565,7 +1561,7 @@ int main(int argc, char **argv)
     passive_host_checks_are_soft = TRUE;
     run_passive_host_tests();
 
-    run_misc_host_check_tests(now);
+    run_misc_host_check_tests();
     run_reaper_tests();
 
     return exit_status();
